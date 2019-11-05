@@ -4,6 +4,7 @@ import Card from '../components/Card';
 import Input from '../components/Input';
 import Color from '../constants/colors'
 import NumberContainer from "../components/NumberContainer";
+import MainButton from '../components/MainButton';
 
 const startGameScreen = props => {
   const [enteredValue, setEnteredValue] = useState('');
@@ -41,7 +42,7 @@ const startGameScreen = props => {
       <Card style={styles.summaryContent}>
         <Text> You Selected </Text>
         <NumberContainer>{selectedNumber}</NumberContainer>
-        <Button color={Color.primary} title="START GAME" onPress={props.onStartGame.bind(this, selectedNumber)}/>
+        <MainButton onPress={props.onStartGame.bind(this, selectedNumber)}>  START GAME </MainButton>
       </Card>
     )
   }
@@ -49,9 +50,9 @@ const startGameScreen = props => {
   return (
     <TouchableWithoutFeedback onPress={() => {Keyboard.dismiss()}}>
       <View style={styles.screen}>
-        <Text style={styles.title}> Start Game Screen! </Text>
+        <Text style={styles.title}> Start Game! </Text>
         <Card style={styles.inputContainer}>
-          <Text> Select a Number </Text>
+          <Text style={styles.boxTitle}> Select a Number </Text>
          <Input
            style={styles.inputText}
            blurOnSubmit
@@ -84,8 +85,13 @@ const styles = StyleSheet.create({
     padding: 10
   },
   title: {
-    fontSize: 20,
-    marginVertical: 10
+    fontSize: 30,
+    marginVertical: 30,
+    fontFamily: 'open-sans-bold'
+  },
+  boxTitle: {
+    fontFamily: 'open-sans-bold',
+    fontSize: 18
   },
   inputContainer: {
     width: 300,
@@ -94,7 +100,9 @@ const styles = StyleSheet.create({
   },
   inputText: {
     width: 50,
-    textAlign: 'center'
+    textAlign: 'center',
+    fontSize: 20,
+    marginVertical: 20
   },
   buttonContainer: {
     flexDirection: 'row',
